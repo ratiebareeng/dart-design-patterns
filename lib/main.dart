@@ -42,6 +42,8 @@ class _TutorialHomePageState extends State<TutorialHomePage> {
       ),
       body: GridView.count(
         crossAxisCount: kIsWeb ? 4 : 2,
+        mainAxisSpacing: kIsWeb ? 16 : 8,
+        crossAxisSpacing: kIsWeb ? 16 : 8,
         children: tutorials
             .map((tutorial) => GestureDetector(
                   onTap: () {
@@ -53,7 +55,12 @@ class _TutorialHomePageState extends State<TutorialHomePage> {
                       ),
                     );
                   },
-                  child: Text(tutorial),
+                  child: Container(
+                    color: Colors.grey[200],
+                    child: Center(
+                      child: Text(tutorial),
+                    ),
+                  ),
                 ))
             .toList(),
       ),
