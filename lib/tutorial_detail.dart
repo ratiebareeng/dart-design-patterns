@@ -17,7 +17,7 @@ class _TutorialDetailState extends State<TutorialDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Flutter Tutorial'),
+        title: Text(widget.tutorial),
         actions: [
           Switch(
             value: isMultiPageView,
@@ -75,20 +75,25 @@ class _TutorialDetailState extends State<TutorialDetailPage> {
       padding: const EdgeInsets.all(16),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          for (int i = 0; i < tutorialSteps.length; i++)
-            Container(
-              width: 8,
+        children: tutorialSteps.map((tutorialStep) {
+          int index = tutorialSteps.indexOf(tutorialStep);
+          return GestureDetector(
+            onTap: () => setState(() {
+              currentPageIndex = index;
+            }),
+            child: Container(
+              width: currentPageIndex == index ? 24 : 8,
               height: 8,
               margin: const EdgeInsets.symmetric(horizontal: 4),
               decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: i == currentPageIndex
+                borderRadius: BorderRadius.circular(4),
+                color: index == currentPageIndex
                     ? Theme.of(context).primaryColor
                     : Colors.grey,
               ),
             ),
-        ],
+          );
+        }).toList(),
       ),
     );
   }
