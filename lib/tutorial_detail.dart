@@ -60,7 +60,7 @@ class _TutorialDetailState extends State<TutorialDetailPage> {
             itemBuilder: (context, index) {
               return SingleChildScrollView(
                 padding: const EdgeInsets.all(16),
-                child: _buildTutorialStep(tutorialSteps[index]),
+                child: _buildTutorialStep(tutorialSteps[currentPageIndex]),
               );
             },
           ),
