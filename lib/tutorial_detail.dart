@@ -1,6 +1,7 @@
 import 'package:design_patterns/data.dart';
 import 'package:design_patterns/tutorial_step.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class TutorialDetailPage extends StatefulWidget {
   final String tutorial;
@@ -133,8 +134,8 @@ class _TutorialDetailState extends State<TutorialDetailPage> {
       padding: const EdgeInsets.all(16),
       child: SelectableText(
         code,
-        style: const TextStyle(
-          fontFamily: 'monospace',
+        style: TextStyle(
+          fontFamily: GoogleFonts.sourceCodePro().fontFamily,
           color: Colors.white,
           fontSize: 14,
         ),

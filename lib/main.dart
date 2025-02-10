@@ -2,6 +2,7 @@ import 'package:design_patterns/data.dart';
 import 'package:design_patterns/tutorial_detail.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const TutorialApp());
@@ -15,9 +16,10 @@ class TutorialApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Tutorial App',
       debugShowCheckedModeBanner: false,
+      themeMode: ThemeMode.system,
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        brightness: Brightness.light,
+        fontFamily: GoogleFonts.lato().fontFamily,
       ),
       home: const TutorialHomePage(),
     );
