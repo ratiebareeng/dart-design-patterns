@@ -6,6 +6,39 @@ List<String> tutorials = [
   'Observer Pattern',
 ];
 
+Map<String, List<TutorialStep>> tutorialDetails = {
+  'Singleton Pattern': singletonTutorialSteps,
+  'Factory Pattern': tutorialSteps,
+  'Observer Pattern': tutorialSteps,
+};
+
+// Sample tutorial data
+final List<TutorialStep> singletonTutorialSteps = [
+  TutorialStep(
+    title: 'Step 1: Private static inctance',
+    description:
+        'Create a private static instance of the class. This will only be accessible within the class:',
+    codeSnippet: 'static Service? _instance;',
+  ),
+  TutorialStep(
+    title: 'Step 2: Private constructor',
+    description:
+        'Create a private static instance of the class. Also only be accessible within the class:',
+    codeSnippet: 'Service._internal();',
+  ),
+  TutorialStep(
+    title: 'Step 3: Create Main Widget',
+    description: 'Create your main widget structure:',
+    codeSnippet: '''
+factory Service() {
+    _instance ??= Service._internal();
+
+    return _instance!;
+  }
+''',
+  ),
+];
+
 // Sample tutorial data
 final List<TutorialStep> tutorialSteps = [
   TutorialStep(

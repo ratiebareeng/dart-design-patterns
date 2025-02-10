@@ -39,10 +39,10 @@ class _TutorialDetailState extends State<TutorialDetailPage> {
 
   Widget _buildSinglePageView() {
     return ListView.builder(
-      itemCount: tutorialSteps.length,
+      itemCount: tutorialDetails[widget.tutorial]!.length,
       padding: const EdgeInsets.all(16),
       itemBuilder: (context, index) {
-        return _buildTutorialStep(tutorialSteps[index]);
+        return _buildTutorialStep(tutorialDetails[widget.tutorial]![index]);
       },
     );
   }
@@ -52,7 +52,7 @@ class _TutorialDetailState extends State<TutorialDetailPage> {
       children: [
         Expanded(
           child: PageView.builder(
-            itemCount: tutorialSteps.length,
+            itemCount: tutorialDetails.length,
             onPageChanged: (index) {
               setState(() {
                 currentPageIndex = index;
@@ -61,7 +61,8 @@ class _TutorialDetailState extends State<TutorialDetailPage> {
             itemBuilder: (context, index) {
               return SingleChildScrollView(
                 padding: const EdgeInsets.all(16),
-                child: _buildTutorialStep(tutorialSteps[currentPageIndex]),
+                child: _buildTutorialStep(
+                    tutorialDetails[widget.tutorial]![currentPageIndex]),
               );
             },
           ),
@@ -76,8 +77,8 @@ class _TutorialDetailState extends State<TutorialDetailPage> {
       padding: const EdgeInsets.all(16),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: tutorialSteps.map((tutorialStep) {
-          int index = tutorialSteps.indexOf(tutorialStep);
+        children: tutorialDetails[widget.tutorial]!.map((tutorialDetail) {
+          int index = tutorialDetails[widget.tutorial]!.indexOf(tutorialDetail);
           return GestureDetector(
             onTap: () => setState(() {
               currentPageIndex = index;
