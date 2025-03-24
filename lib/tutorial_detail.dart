@@ -1,6 +1,8 @@
 import 'package:design_patterns/data.dart';
+import 'package:design_patterns/singleton.dart';
 import 'package:design_patterns/tutorial_step.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TutorialDetailPage extends StatefulWidget {
@@ -134,14 +136,48 @@ class _TutorialDetailState extends State<TutorialDetailPage> {
         borderRadius: BorderRadius.circular(8),
       ),
       width: double.infinity,
-      padding: const EdgeInsets.all(16),
-      child: SelectableText(
-        code,
-        style: TextStyle(
-          fontFamily: GoogleFonts.sourceCodePro().fontFamily,
-          color: Colors.white,
-          fontSize: 14,
-        ),
+      //  padding: const EdgeInsets.all(16),
+      child: Stack(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: SelectableText(
+              code,
+              style: TextStyle(
+                fontFamily: GoogleFonts.sourceCodePro().fontFamily,
+                color: Colors.white,
+                fontSize: 14,
+              ),
+            ),
+          ),
+          Positioned(
+            right: 8,
+            top: 8,
+            child: IconButton(
+              onPressed: () async {
+                try {
+                  await Clipboard.setData(
+                    ClipboardData(text: code),
+                  );
+                  if (!mounted) {
+                    return;
+                  }
+
+                  Service.instance
+                      .simpleSnackbar(context, 'Copied to Clipboard');
+                } catch (_) {
+                  if (!mounted) {
+                    return;
+                  }
+
+                  Service.instance
+                      .simpleSnackbar(context, 'Failed to copy to Clipboard');
+                }
+              },
+              icon: const Icon(Icons.copy),
+            ),
+          )
+        ],
       ),
     );
   }
