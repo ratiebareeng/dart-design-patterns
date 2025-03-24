@@ -14,6 +14,11 @@ class Service {
     return _instance!;
   }
 
+  static Service get instance {
+    _instance ??= Service._internal();
+    return _instance!;
+  }
+
   // 4. Add business logic as needed
   void someLogic() {
     log('Some logic');
