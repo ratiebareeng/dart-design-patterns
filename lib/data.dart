@@ -53,6 +53,31 @@ factory Service() {
 Service().someLogic();
 Service.instance.someLogic(); ''',
   ),
+  TutorialStep(
+    title: 'Step 6: Full Code',
+    description: 'Here is the full code for the singleton class:',
+    codeSnippet: '''
+class Service {
+  static Service? _instance;
+
+  Service._internal();
+
+  factory Service() {
+    _instance ??= Service._internal();
+
+    return _instance!;
+  }
+
+  static Service get instance {
+    _instance ??= Service._internal();
+    return _instance!;
+  }
+
+  void someLogic() {
+    log('Some logic');
+  }
+}''',
+  ),
 ];
 
 // Sample tutorial data

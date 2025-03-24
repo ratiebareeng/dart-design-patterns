@@ -29,18 +29,20 @@ class _TutorialDetailState extends State<TutorialDetailPage> {
               });
             },
           ),
-          const SizedBox(width: 8),
           Text(isMultiPageView ? 'Page View' : 'Single Page'),
+          const SizedBox(width: 8),
         ],
       ),
-      body: isMultiPageView ? _buildPageView() : _buildSinglePageView(),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: isMultiPageView ? _buildPageView() : _buildSinglePageView(),
+      ),
     );
   }
 
   Widget _buildSinglePageView() {
     return ListView.builder(
       itemCount: tutorialDetails[widget.tutorial]!.length,
-      padding: const EdgeInsets.all(16),
       itemBuilder: (context, index) {
         return _buildTutorialStep(tutorialDetails[widget.tutorial]![index]);
       },

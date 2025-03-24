@@ -44,6 +44,7 @@ class _TutorialHomePageState extends State<TutorialHomePage> {
         crossAxisCount: kIsWeb ? 4 : 2,
         mainAxisSpacing: kIsWeb ? 16 : 8,
         crossAxisSpacing: kIsWeb ? 16 : 8,
+        padding: const EdgeInsets.all(16),
         children: tutorials
             .map((tutorial) => GestureDetector(
                   onTap: () {
