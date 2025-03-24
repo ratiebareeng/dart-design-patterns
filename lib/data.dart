@@ -15,7 +15,7 @@ Map<String, List<TutorialStep>> tutorialDetails = {
 // Sample tutorial data
 final List<TutorialStep> singletonTutorialSteps = [
   TutorialStep(
-    title: 'Step 1: Private static inctance',
+    title: 'Step 1: Private static instance',
     description:
         'Create a private static instance of the class. This will only be accessible within the class:',
     codeSnippet: 'static Service? _instance;',
@@ -27,15 +27,31 @@ final List<TutorialStep> singletonTutorialSteps = [
     codeSnippet: 'Service._internal();',
   ),
   TutorialStep(
-    title: 'Step 3: Create Main Widget',
-    description: 'Create your main widget structure:',
+    title: 'Step 3: Create factory constructor',
+    description: 'Create a factory constructor for the class:',
     codeSnippet: '''
 factory Service() {
     _instance ??= Service._internal();
 
     return _instance!;
-  }
-''',
+  }''',
+  ),
+  TutorialStep(
+    title: 'Step 4: Create instance getter',
+    description: 'Create a static instance getter for private instance:',
+    codeSnippet: '''
+factory Service() {
+    _instance ??= Service._internal();
+
+    return _instance!;
+  } ''',
+  ),
+  TutorialStep(
+    title: 'Step 5: Usage',
+    description: 'Use the singleton instance in your code:',
+    codeSnippet: '''
+Service().someLogic();
+Service.instance.someLogic(); ''',
   ),
 ];
 
